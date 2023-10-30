@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'employee-dashboard';
-  addEmployee(newEmployee: any) {
-    this.employeeList.push(newEmployee);
+  employees = [
+    {"name": "John", "salary": 3000, "designation": "developer"},
+    {"name": "Emma", "salary": 4000, "designation": "manager"},
+    {"name": "Kelly", "salary": 3500, "designation": "tester"}
+  ];
+
+  addNewEmployee() {
+    const newEmployee = {"name": "Michael", "salary": 4500, "designation": "designer"};
+    this.employees.push(newEmployee);
   }
-  
 }

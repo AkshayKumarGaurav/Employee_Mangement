@@ -1,11 +1,12 @@
 <div class="employee-dashboard">
     <h2>Employee Dashboard</h2>
-    <div *ngIf="displayedEmployee">
-        <h3>Currently Highest Paid Employee</h3>
-        <div class="employee-details">
-            <p><strong>Name:</strong>{{displayedEmployee.name}}</p>
-            <p><strong>Salary:</strong>{{displayedEmployee.salary}}</p>
-            <p><strong>Designation:</strong>{{displayedEmployee.designation}}</p>
-        </div>
+    <div *ngIf="highestPaidEmployee">
+      <div class="highlighted">
+        <h3>Highest Paid Employee:</h3>
+        <p>Name: {{ highestPaidEmployee.name }}</p>
+        <p>Salary: ${{ highestPaidEmployee.salary }}</p>
+        <p>Designation: {{ highestPaidEmployee.designation }}</p>
+      </div>
     </div>
-</div>
+  </div>
+  

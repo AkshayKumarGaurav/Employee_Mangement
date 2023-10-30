@@ -6,18 +6,25 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./employee-dashboard.component.css']
 })
 export class EmployeeDashboardComponent {
-  @Input() employees: any[];
-  displayedEmployees: any;
+  @Input() employees: Array<{ name: string; salary: number; designation: string }> = [];
+  highestPaidEmployee: { name: string; salary: number; designation: string };
 
-  constructor(){
-    this.displayedEmployees=this.getEmployeeWithHighestSalary();
+  constructor() {
+    this.updateHighestPaidEmployee();
   }
 
-  getEmployeeWithHighestSalary(): any{
-    if(this.employees && this.employees.length>0){
-      return this.employees.reduce((max,employee)=>
-      employee.salary>max.salary?employee:max)
-    };
+  addEmployee(employee: { name: string; salary: number; designation: string }) {
+    this.employees.push(employee);
+    if (employee.salary > this.highestPaidEmployee.salary) {
+      this.highestPaidEmployee = { ...employee };
+    }
   }
-  return null;
+
+  updateHighestPaidEmployee() {
+    if (this.employees.length > 0) {
+      this.highestPaidEmployee = this.employees.reduce((prev, current) =>
+        prev.salary > current.salary ? prev : current
+      );
+    }
+  }
 }
